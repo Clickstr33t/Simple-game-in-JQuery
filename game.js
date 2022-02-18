@@ -4,26 +4,29 @@ var buttonColours = ["red", "blue", "green", "yellow"];
 var level = 0;
 var started = false;
 
-if (!started){
-    $("h1").on("mouseover",function(){
+
+$("h1").on("mouseover",function(){
+    if (!started)  {
         $("h1").addClass("pressed");
-    });
-    $("h1").on("mouseout",function(){
-        $("h1").removeClass("pressed");
-    });
-}
+    }
+});
+$("h1").on("mouseout",function(){
+    $("h1").removeClass("pressed");
+});
+
+
 
 $("#red").click(function(){
-    buttonClick("red");
+    if (started) buttonClick("red");
 });
 $("#green").click(function(){
-    buttonClick("green");
+    if (started) buttonClick("green");
 });
 $("#blue").click(function(){
-    buttonClick("blue");
+    if (started) buttonClick("blue");
 });
 $("#yellow").click(function(){
-    buttonClick("yellow");
+    if (started) buttonClick("yellow");
 });
 
 
@@ -66,7 +69,7 @@ function checkAnswer (currentLevel){
             $("body").removeClass("game-over");
         }, 200);
         console.log("wrong");
-       $("h1").text("Restart");
+       $("h1").text("Click to Restart");
        startOver();
     };
 }
